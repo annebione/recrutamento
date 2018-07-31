@@ -1,0 +1,49 @@
+<div class="container mtb-20">
+  <div class="row">
+    <div class="col-sm-12">
+        <h6 class="text-secondary"> Todos os campos marcados com * são obrigatórios.</h6>
+    </div>
+  </div>
+</div>
+
+<form class="container" (ngSubmit)="submitRegister()" #registerForm="ngForm">
+
+  <!-- INPUT NOME -->
+
+  <div class="form-group">
+    <label for="name-field">Nome*</label>
+    <input #nameInput="ngModel" [(ngModel)]="user.name" type="text" class="form-control" id="name-field" name="name-field" placeholder="Insira seu nome completo" required>
+    <small [hidden]="nameInput.valid || nameInput.pristine"  class="form-text text-muted">Este campo é obrigatório</small>
+  </div>
+
+  <!-- INPUT CPF -->
+
+  <div class="form-group">
+    <label for="cpf-field">CPF*</label>
+    <input #cpfInput="ngModel" [(ngModel)]="user.cpf"  type="text" class="form-control" id="cpf-field" name="cpf-field" placeholder="Insira seu CPF" required>
+    
+    <small [hidden]="cpfInput.valid || cpfInput.pristine"  class="form-text text-muted">
+        <span *ngIf="cpfInput?.errors?.cpf">CPF inválido</span>
+        <span *ngIf="cpfInput?.errors?.required">Este campo é obrigatório</span>
+    </small>
+  </div>
+
+  <!-- INPUT CELULAR -->
+
+  <div class="form-group">
+    <label for="cellphone-input">Telefone celular*</label>
+    <input #celularInput="ngModel" [(ngModel)]="user.celular" type="text" class="form-control" id="cellphone-field" name="cellphone-field" placeholder="Digite seu telefone celular" required>
+    <small [hidden]="celularInput.valid || celularInput.pristine"  class="form-text text-muted">Este campo é obrigatório</small>
+  </div>
+
+  <!-- INPUT DATA DE NASCIMENTO -->
+
+  <div class="form-group">
+    <label for="birthdate-field">Data nascimento*</label>
+    <input #dataNascimentoInput="ngModel" [(ngModel)]="user.data_nascimento" type="date" class="form-control" id="birthdate-field" name="birthdate-field" required>
+    <small [hidden]="dataNascimentoInput.valid || dataNascimentoInput.pristine"  class="form-text text-muted">Este campo é obrigatório</small>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid" (click)="submitRegister()">Registrar</button>
+
+</form>

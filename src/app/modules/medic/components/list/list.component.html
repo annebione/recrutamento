@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data de Nascimento</th>
+        <th>Telefone celular</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.cpf }}</td>
+        <td>{{ user.data_nascimento | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ user.celular }}</td>
+        <td>{{ user.id_medico }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
